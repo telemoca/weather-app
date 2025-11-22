@@ -21,7 +21,6 @@ const daysOfTheWeek = computed(() => {
   )
   return capitalizedDays3Letters
 })
-
 </script>
 
 <template>

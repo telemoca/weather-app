@@ -32,11 +32,22 @@ const formattedTodayTemp = computed(() => {
       class="absolute flex justify-between items-center max-sm:flex-col max-sm:justify-around inset-0 p-8 max-xl:p-12 max-lg:p-8 font-dm text-neutral-0"
     >
       <div class="font-dm font-semibold text-neutral-0 max-sm:mt-3">
-        <p class="font-semibold text-xl max-sm:text-[8vw] pb-1">{{ meteoStore.city ? `${meteoStore.city}, ` : (meteoStore.county ? `${meteoStore.county}, ` : "") }}{{ meteoStore.country }}</p>
+        <p class="font-semibold text-xl max-sm:text-[8vw] pb-1">
+          {{
+            meteoStore.city
+              ? `${meteoStore.city}, `
+              : meteoStore.county
+                ? `${meteoStore.county}, `
+                : ''
+          }}{{ meteoStore.country }}
+        </p>
         <p class="font-normal text-sm max-sm:text-[3.5vw] opacity-70 pt-1">{{ formattedDate }}</p>
       </div>
       <div class="flex items-center">
-        <AdaptativeWeatherIcon :weather_code="meteoStore.today_weather_code" class="w-20 max-sm:w-[25vw]" />
+        <AdaptativeWeatherIcon
+          :weather_code="meteoStore.today_weather_code"
+          class="w-20 max-sm:w-[25vw]"
+        />
         <p class="font-bold italic text-7xl max-sm:text-[20vw] ml-10">{{ formattedTodayTemp }}</p>
       </div>
     </div>

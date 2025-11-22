@@ -42,9 +42,5 @@ const iconName = computed((): WeatherIcon | undefined => {
 </script>
 
 <template>
-  <img
-    :src="`/weather-icons/icon-${iconName}.webp`"
-    alt="weather icon"
-    class="object-contain"
-  />
+  <img :src="`/weather-icons/icon-${iconName}.webp`" alt="weather icon" class="object-contain" />
 </template>

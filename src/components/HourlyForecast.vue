@@ -29,9 +29,7 @@ watch(
 </script>
 
 <template>
-  <div
-    class="bg-neutral-800 p-5 rounded-2xl flex flex-col justify-between"
-  >
+  <div class="bg-neutral-800 p-5 rounded-2xl flex flex-col justify-between">
     <div class="flex justify-between items-center mb-4 text-neutral-0 font-dm font-semibold">
       <p>Hourly forecast</p>
       <DropdownDay @day-selected="updateWeather" />

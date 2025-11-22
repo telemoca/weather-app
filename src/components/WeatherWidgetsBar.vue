@@ -18,7 +18,10 @@ const formattedWindSpeed = computed(() => {
 </script>
 
 <template>
-  <div class="flex w-full gap-4 mb-10 max-md:grid max-md:grid-cols-2 max-md:gap-3" v-if="meteoStore.isReadyToDisplay">
+  <div
+    class="flex w-full gap-4 mb-10 max-md:grid max-md:grid-cols-2 max-md:gap-3"
+    v-if="meteoStore.isReadyToDisplay"
+  >
     <WeatherWidget :title="'Feels Like'" :value="formattedTemperature" :unit="'°'" />
     <WeatherWidget :title="'Humidity'" :value="meteoStore.today_relative_humidity_2m" :unit="'%'" />
     <WeatherWidget

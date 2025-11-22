@@ -132,7 +132,7 @@ function updateWidth() {
           @click="selectCity(index)"
           class="rounded-md border border-neutral-800 hover:bg-neutral-700 hover:border-neutral-600 focus:z-10 py-1 px-2 font-normal text-left cursor-pointer focus:outline-2 outline-neutral-0"
         >
-          {{ result.name }}, {{ result.admin2 ? `${result.admin2}, ` : "" }}{{ result.country }}
+          {{ result.name }}, {{ result.admin2 ? `${result.admin2}, ` : '' }}{{ result.country }}
         </button>
       </div>
     </div>

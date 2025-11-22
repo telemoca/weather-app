@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import AdaptativeWeatherIcon from './AdaptativeWeatherIcon.vue';
-
+import AdaptativeWeatherIcon from './AdaptativeWeatherIcon.vue'
 </script>
-
-
 
 <template>
   <div
