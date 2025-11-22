@@ -12,6 +12,7 @@ const user_research = ref('')
 const input = ref()
 const results = ref<CityData[]>([])
 const isMobile = ref(window.innerWidth < 639)
+const noResultFound = ref(false)
 
 const showDropdown = () => {
   isOpen.value = true
@@ -41,6 +42,11 @@ const updateResults = async () => {
       4,
     )
     showDropdown()
+    if (results.value.length === 0) {
+      noResultFound.value = true
+    } else {
+      noResultFound.value = false
+    }
   }
 }
 
@@ -115,7 +121,8 @@ function updateWidth() {
         class="p-3 pl-12 w-full rounded-lg text-neutral-200 placeholder-neutral-200 cursor-pointer focus:outline-2 outline-offset-3 outline-neutral-0"
         placeholder="Search for a place..."
         @click="resetSearch"
-        @input="!isMobile && updateResults()"
+        @input="(!isMobile && updateResults())"
+        @focus="hideDropdown"
       />
       <img
         src="/utilities-icons/icon-search.svg"
@@ -137,7 +144,7 @@ function updateWidth() {
         </button>
         <button
           @click.prevent="hideDropdown"
-          v-if="results.length === 0"
+          v-if="noResultFound"
           class="rounded-md border border-neutral-800 py-1 px-2 font-normal text-left"
           v-text="'No search result found!'"
         ></button>
