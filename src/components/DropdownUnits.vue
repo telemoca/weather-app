@@ -14,6 +14,7 @@ const isKmphSelected = ref(true)
 const isMmSelected = ref(true)
 
 const switchToImperial = () => {
+  hideDropdown()
   if (switchTo.value === 'Imperial') {
     switchTo.value = 'Metric'
     userSettingsStore.temp_unit = 'fahr'
