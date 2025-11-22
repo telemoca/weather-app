@@ -32,15 +32,15 @@ const resetSearch = () => {
 }
 
 const updateResults = async () => {
-  results.value = await getCorrespondingCities(
-    user_research.value,
-    navigator.language.slice(0, 2) || 'en',
-    4,
-  )
-  if (results.value.length > 0) {
-    showDropdown()
-  } else {
+  if (user_research.value.length <= 1) {
     hideDropdown()
+  } else {
+    results.value = await getCorrespondingCities(
+      user_research.value,
+      navigator.language.slice(0, 2) || 'en',
+      4,
+    )
+    showDropdown()
   }
 }
 
@@ -132,8 +132,15 @@ function updateWidth() {
           @click="selectCity(index)"
           class="rounded-md border border-neutral-800 hover:bg-neutral-700 hover:border-neutral-600 focus:z-10 py-1 px-2 font-normal text-left cursor-pointer focus:outline-2 outline-neutral-0"
         >
-          {{ result.name }}, {{ result.admin2 ? `${result.admin2}, ` : '' }}{{ result.country }}
+          {{ result.name ? `${result.name}, ` : '' }}{{ result.admin2 ? `${result.admin2}, ` : ''
+          }}{{ result.country }}
         </button>
+        <button
+          @click.prevent="hideDropdown"
+          v-if="results.length === 0"
+          class="rounded-md border border-neutral-800 py-1 px-2 font-normal text-left"
+          v-text="'No search result found!'"
+        ></button>
       </div>
     </div>
     <button
