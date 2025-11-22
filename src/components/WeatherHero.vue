@@ -5,6 +5,19 @@ import { computed } from 'vue'
 
 const meteoStore = useMeteoStore()
 
+const isCityNameLong = computed(() => {
+  if (
+    (meteoStore.city ? `${meteoStore.city}, ` : meteoStore.county ? `${meteoStore.county}, ` : '')
+      .length +
+      meteoStore.country.length >=
+    25
+  ) {
+    return true
+  } else {
+    return false
+  }
+})
+
 const formattedDate = computed(() => {
   if (!meteoStore.time) {
     return ' '
@@ -31,8 +44,14 @@ const formattedTodayTemp = computed(() => {
     <div
       class="absolute flex justify-between items-center max-sm:flex-col max-sm:justify-around inset-0 p-8 max-xl:p-12 max-lg:p-8 font-dm text-neutral-0"
     >
-      <div class="font-dm font-semibold text-neutral-0 max-sm:mt-3">
-        <p class="font-semibold text-xl max-sm:text-[8vw] pb-1">
+      <div class="font-dm font-semibold text-neutral-0 max-sm:mt-1">
+        <p
+          class="font-semibold text-xl pb-1"
+          :class="{
+            'max-sm:text-[8vw]': !isCityNameLong,
+            'max-sm:text-[6vw]': isCityNameLong,
+          }"
+        >
           {{
             meteoStore.city
               ? `${meteoStore.city}, `
