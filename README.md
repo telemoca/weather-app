@@ -39,8 +39,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/telemoca/weather-app)
-- Live Site URL: [Add live site URL here](https://telemoca.github.io/weather-app/)
+- Solution URL: [Link](https://github.com/telemoca/weather-app)
+- Live Site URL: [Link](https://telemoca.github.io/weather-app/)
 
 ## My process
 
