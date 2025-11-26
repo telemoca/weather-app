@@ -4,6 +4,7 @@ import { onUnmounted, ref, useTemplateRef, watch } from 'vue'
 
 const emits = defineEmits(['day-selected'])
 const meteoStore = useMeteoStore()
+const indexSelectedDay = ref(0)
 
 const daysOfTheWeek = () => {
   const userLang = navigator.language ?? 'en-US'
@@ -32,6 +33,7 @@ const hideDropdown = () => {
 }
 
 const choseDay = (day: string, index: number) => {
+  indexSelectedDay.value = index
   selectedDay.value = day
   emits('day-selected', index)
   hideDropdown()
@@ -76,6 +78,10 @@ onUnmounted(() => {
         :key="day"
         @click="choseDay(day, index)"
         class="w-full text-sm font-normal text-left select-none rounded p-1 pl-2 pr-10 mb-0.5 last:mb-0 hover:bg-neutral-700 focus:outline-2 outline-neutral-0"
+        :class="{
+          'bg-neutral-600': index === indexSelectedDay,
+          'hover:bg-neutral-600!': index === indexSelectedDay,
+        }"
       >
         {{ day }}
       </button>
