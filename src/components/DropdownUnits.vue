@@ -44,17 +44,29 @@ watch([isCelcSelected, isKmphSelected, isMmSelected], ([newTemp, newSpeed, newLe
 
 const changeTempUnit = (unit: string) => {
   userSettingsStore.temp_unit = unit
-  isCelcSelected.value = !isCelcSelected.value
+  if (unit === 'celc') {
+    isCelcSelected.value = true
+  } else {
+    isCelcSelected.value = false
+  }
 }
 
 const changeSpeedUnit = (unit: string) => {
   userSettingsStore.speed_unit = unit
-  isKmphSelected.value = !isKmphSelected.value
+  if (unit === 'kmph') {
+    isKmphSelected.value = true
+  } else {
+    isKmphSelected.value = false
+  }
 }
 
 const changeLengthUnit = (unit: string) => {
   userSettingsStore.length_unit = unit
-  isMmSelected.value = !isMmSelected.value
+  if (unit === 'mm') {
+    isMmSelected.value = true
+  } else {
+    isMmSelected.value = false
+  }
 }
 
 const toggleDropdown = () => {
