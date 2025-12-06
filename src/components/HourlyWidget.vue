@@ -9,7 +9,16 @@ const props = defineProps<{
 }>()
 
 const formattedHour = computed(() => {
-  return `${props.hour} PM`
+  if (props.hour === 0) {
+    return '12 AM'
+  }
+  if (props.hour < 12) {
+    return `${props.hour} AM`
+  }
+  if (props.hour === 12) {
+    return '12 PM'
+  }
+  return `${props.hour - 12} PM`
 })
 
 const formattedTemperature = computed(() => {
